@@ -18,9 +18,13 @@
 }
 
 /* Mobile View */
-@media only screen and (min-width: 481px) and (max-width: 767px) {
+@media only screen and (min-width: 320px) and (max-width: 767px) {
   body {
     overflow-y: auto !important;
+  }
+
+  header {
+    justify-content: center;
   }
 
   .cardWrapper {
@@ -35,6 +39,7 @@
 
   .col-2 {
     flex-basis: 100% !important;
+    justify-content: center;
   }
 
   .col-10 {
