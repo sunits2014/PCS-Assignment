@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pcs-assignment": {
+      "hosting": {
+        "PCS-Assignment": [
+          "pcs-assignment"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pcs-assignment"
+  }
+}

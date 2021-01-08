@@ -1,0 +1,47 @@
+/*
+  Responsive Custom CSS here
+*/
+
+/* Tablet View */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .col-2 {
+    flex-basis: 25% !important;
+  }
+
+  .col-10 {
+    flex-basis: 75% !important;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(2, 50% [col-start]) !important;
+  }
+}
+
+/* Mobile View */
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  body {
+    overflow-y: auto !important;
+  }
+
+  .cardWrapper {
+    height    : auto !important;
+    max-height: none !important;
+    min-height: auto;
+  }
+
+  .row {
+    flex-direction: column !important;
+  }
+
+  .col-2 {
+    flex-basis: 100% !important;
+  }
+
+  .col-10 {
+    flex-basis: 75% !important;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(1, 100% [col-start]) !important;
+  }
+}

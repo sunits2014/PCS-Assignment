@@ -1,0 +1,73 @@
+@card-width: 25%;
+
+.row {
+    display: flex;
+    padding: 1rem;
+}
+
+.col-2 {
+    flex-basis: 20%;
+}
+
+.col-10 {
+    flex-basis: 80%;
+}
+
+.missionCard {
+    margin: 1rem;
+}
+
+.cardWrapper {
+    height: 90vh;
+    max-height: 90vh;
+    min-height: auto;
+    overflow-y: auto;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 25% [col-start]);
+}
+
+h3 {
+    font-size: 13px;
+    color: blue;
+    font-weight: bold;
+}
+
+ul#missionDetails {
+    padding: 0;
+}
+
+ul#missionDetails li {
+    list-style-type: none;
+}
+
+button {
+    margin: 0.5rem;
+}
+
+button:active, button:focus {
+    outline: none;
+}
+
+.slideWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.slideWrapper section {
+    margin: 1rem 0 0;
+}
+
+.slideWrapper section mat-slide-toggle {
+    font-size: 12px;
+}
+
+img {
+    background-color: #f6f6f6;
+}
+
+p {
+    margin: 1rem 0;
+}

@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.less"
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/styles.less",
+              "src/responsive.less"
             ],
             "scripts": []
           },
@@ -92,6 +94,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.less"
             ],
             "scripts": []
@@ -121,8 +124,13 @@
               "devServerTarget": "PCS-Assignment:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "PCS-Assignment"
 }
