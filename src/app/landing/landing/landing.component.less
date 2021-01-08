@@ -1,4 +1,5 @@
 @card-width: 25%;
+@cardWrapperHeight: 90vh;
 
 .row {
     display: flex;
@@ -18,8 +19,8 @@
 }
 
 .cardWrapper {
-    height: 90vh;
-    max-height: 90vh;
+    height: @cardWrapperHeight;
+    max-height: @cardWrapperHeight;
     min-height: auto;
     overflow-y: auto;
 }

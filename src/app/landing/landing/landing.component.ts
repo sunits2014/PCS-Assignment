@@ -32,6 +32,7 @@ export class LandingComponent implements OnInit {
     this.getMasterData();
   }
 
+  // Method triggered while selecting the year.
   public selectYear(year) {
     if (year.activeColor === 'primary') {
       year.activeColor = '';
@@ -56,6 +57,7 @@ export class LandingComponent implements OnInit {
     event.checked ? this.getsuccessfullLaunchAndLandData() : this.getsuccessfullLaunchData();
   }
 
+  // Basically main method to fetch non-filtered data.
   private getMasterData() {
     if (this.land && this.land.checked) {
       this.land.checked = false;
@@ -84,6 +86,7 @@ export class LandingComponent implements OnInit {
     })
   }
 
+  // Basically an abstracted method to avoid repetetion of same logic in the above methods. Please refer to the call signatures of this method.
   private populateMasterData(response: any) {
     let launchYears = [];
     this.masterDataSet = [];
