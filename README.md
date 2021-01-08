@@ -15,3 +15,7 @@
 4. Frameworks: No Bootstrap or Materialoze or any UI framework is used. Plain basic CSS/LESS written for RWD(Responsive Web Design) aspect. As the elements on the page are not too much, hence wrote a mix of basic and very few LESS parameters and CSS.
 
 5. Interface: The API response brings back a lot of data, I filtered them out and kept a few while using respective Interface.
+
+# LightHouse Report
+
+https://raw.github.com/sunits2014/PCS-Assignment/master/LighthouseReport.jpg
