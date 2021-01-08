@@ -40,3 +40,44 @@
 [debug] [2021-01-08T20:07:05.348Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/pcs-assignment/versions/1f78056d2f020418/files/36909ef6d45f1dd63beaca7c19d430c935eff1d46f326ff0c2ce612ea217b6a0 [stream]
 [debug] [2021-01-08T20:07:05.350Z] [hosting][populate queue][FINAL] {"max":2307,"min":2307,"avg":2307,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2313}
 [debug] [2021-01-08T20:07:05.351Z] [hosting] uploads queued: 2
+[debug] [2021-01-08T20:07:08.492Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/pcs-assignment/versions/1f78056d2f020418/files/a116c16b0594f7f3e857cc655c9ac10a3ae83753541a6550220f4fe22c7d9b56 200
+[debug] [2021-01-08T20:07:08.492Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/pcs-assignment/versions/1f78056d2f020418/files/a116c16b0594f7f3e857cc655c9ac10a3ae83753541a6550220f4fe22c7d9b56 [stream]
+[debug] [2021-01-08T20:07:08.703Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/pcs-assignment/versions/1f78056d2f020418/files/36909ef6d45f1dd63beaca7c19d430c935eff1d46f326ff0c2ce612ea217b6a0 200
+[debug] [2021-01-08T20:07:08.703Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/pcs-assignment/versions/1f78056d2f020418/files/36909ef6d45f1dd63beaca7c19d430c935eff1d46f326ff0c2ce612ea217b6a0 [stream]
+[debug] [2021-01-08T20:07:08.704Z] [hosting][upload queue][FINAL] {"max":3361,"min":3152,"avg":3256.5,"active":0,"complete":2,"success":2,"errored":0,"retried":0,"total":2,"elapsed":3363}
+[info] +  hosting[pcs-assignment]: file upload complete 
+[debug] [2021-01-08T20:07:08.705Z] [hosting] deploy completed after 5760ms
+[debug] [2021-01-08T20:07:09.205Z] [
+  {
+    "config": {
+      "public": "dist/PCS-Assignment",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "pcs-assignment"
+    },
+    "site": "pcs-assignment",
+    "version": "sites/pcs-assignment/versions/1f78056d2f020418"
+  }
+]
+[info] i  hosting[pcs-assignment]: finalizing version... 
+[debug] [2021-01-08T20:07:09.206Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-01-08T20:07:09.207Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-01-08T20:07:09.659Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Fri, 08 Jan 2021 20:07:08 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-01-08T20:07:09.663Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/pcs-assignment/versions/1f78056d2f020418?updateMask=status  
+ {"status":"FINALIZED"}
+[debug] [2021-01-08T20:07:11.414Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Jan 2021 20:07:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-01-08T20:07:11.415Z] [hosting] finalized version for pcs-assignment: {"name":"sites/pcs-assignment/versions/1f78056d2f020418","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-01-08T20:07:01.767422Z","createUser":{"email":"sunit.sinha1985@gmail.com"},"finalizeTime":"2021-01-08T20:07:10.509931Z","finalizeUser":{"email":"sunit.sinha1985@gmail.com"}}
+[info] +  hosting[pcs-assignment]: version finalized 
+[info] i  hosting[pcs-assignment]: releasing new version... 
+[debug] [2021-01-08T20:07:11.418Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/pcs-assignment/releases?version_name=sites/pcs-assignment/versions/1f78056d2f020418  
+ {"message":null}
