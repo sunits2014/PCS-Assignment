@@ -96,6 +96,7 @@ export class LandingComponent implements OnInit {
     response.forEach(item => {
       const responseObj = this.landingService.assignTemplateValues(item);
       launchYears.unshift({ year: responseObj.launchYear });
+      // Filtering and considering items with valid Mission Ids only.
       if (responseObj.missionIds.length > 0) {
         this.missionDetailsCollection.unshift(responseObj);
       }
