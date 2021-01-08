@@ -20,6 +20,10 @@ https://pcs-assignment.web.app/landing
 
 # LightHouse Report
 
+From https://web.dev/measure/ :
 ![image](https://raw.github.com/sunits2014/PCS-Assignment/master/LighthouseReport.jpg)
+
+From Chrome Dev Tools Console:
+![image](https://raw.github.com/sunits2014/PCS-Assignment/master/LighthouseReport_Chrome.jpg)
 
 The Performance score is little low because of the image files being fetched directly from the links in the API response + due to their varied sizes and formats. That can be corrected once the size and format issues are sorted.
