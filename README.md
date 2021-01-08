@@ -1,27 +1,17 @@
-# PCSAssignment
+# Technologies Used:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
+1. Angular 10.
+2. Angular Material for Buttons and Slide Buttons.
+3. Google Firebase for Hosting purpose.
 
-## Development server
+# Methods Adapted on the way based on Scenarios:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. The Year Filter: A basic array of all the years received from the API Reponse, collected in one array and filtered to remove the duplicate ones. Each button is toggle-able. When the user selects on year, that button becomes the active one and the main array containing all the years is filtered via the 'Array.filter' method to provide the matching values on the UI. This can be achieved by implementing pipes, however, as the data to be filtered is not too much, hence I took this approach. For years which do not hold any corresponding response in the cards, a message is shown 'No Data Found'.
 
-## Code scaffolding
+2. Mission IDs: When investigating the API response, I found that a lot of objects came back with no mission_id data in them, hence I filtered them out and showing only with valid mission_ids.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Launch and Land selection: Ideally, a landing to be successful, the launch has to be automatically successful, hence, I am disabling the 'Successful Landing' button without the 'Successful Launch' button enabled. Based on this selection, respective APIs are called and the view is refreshed while not refreshing the entire page/window.
 
-## Build
+4. Frameworks: No Bootstrap or Materialoze or any UI framework is used. Plain basic CSS/LESS written for RWD(Responsive Web Design) aspect. As the elements on the page are not too much, hence wrote a mix of basic and very few LESS parameters and CSS.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+5. Interface: The API response brings back a lot of data, I filtered them out and kept a few while using respective Interface.
