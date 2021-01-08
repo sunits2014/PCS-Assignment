@@ -18,4 +18,4 @@
 
 # LightHouse Report
 
-https://raw.github.com/sunits2014/PCS-Assignment/master/LighthouseReport.jpg
+![image](https://raw.github.com/sunits2014/PCS-Assignment/master/LighthouseReport.jpg)
