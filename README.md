@@ -27,3 +27,12 @@ From Chrome Dev Tools Console:
 ![image](https://raw.github.com/sunits2014/PCS-Assignment/master/LighthouseReport_Chrome.jpg)
 
 The Performance score is little low because of the image files being fetched directly from the links in the API response + due to their varied sizes and formats. That can be corrected once the size and format issues are sorted.
+
+# Test Cases:
+
+Written some basic test cases and attaching a screenshot of the same. Haven't written much test cases earlier, hence may not be as good as expected. Please check the 'app.component.spec.ts' and 'landing.component.spec.ts' file.
+
+![image](https://raw.github.com/sunits2014/PCS-Assignment/master/PCS-Test.png)
+
+
+
