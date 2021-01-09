@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IFlightResponse } from './iflight-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LandingService {
+
+  public originalYearsData: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
+  public selectedYear: BehaviorSubject<string> = new BehaviorSubject('');
 
   private flightRespObj: IFlightResponse;
 

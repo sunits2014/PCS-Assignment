@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { IFlightResponse } from '../iflight-response';
 import { LandingService } from '../landing.service';
 
@@ -37,14 +38,20 @@ export class LandingComponent implements OnInit {
     if (year.activeColor === 'primary') {
       year.activeColor = '';
       this.masterDataSet = this.missionDetailsCollection;
+      this.landingService.selectedYear.next(null);
     } else {
+      this.landingService.selectedYear.next(year.year);
       this.years.forEach(item => {
         item.activeColor = '';
       })
       year.activeColor = 'primary';
-      this.masterDataSet = this.missionDetailsCollection.filter(item => {
-        return item.launchYear === year.year;
-      })
+      if (this.validateSelectedYear(year.year)) {
+        this.getsuccessfullLaunchAndLandData(year.year);
+        this.launch.checked = true;
+        this.land.checked = true;
+      } else {
+        this.filterDataBasedOnYear(year.year);
+      }
     }
   }
 
@@ -54,16 +61,20 @@ export class LandingComponent implements OnInit {
   }
 
   public toggleSuccessfullLanding(event) {
-    event.checked ? this.getsuccessfullLaunchAndLandData() : this.getsuccessfullLaunchData();
+    if (event.checked) {
+      this.getsuccessfullLaunchAndLandData(this.landingService.selectedYear.value)
+    } else if (!event.checked && this.launch.checked) {
+      this.getsuccessfullLaunchData()
+    } else {
+      this.getMasterData()
+    }
+    // event.checked ? this.getsuccessfullLaunchAndLandData() : this.getMasterData();
   }
 
   // Basically main method to fetch non-filtered data.
   private getMasterData() {
-    if (this.land && this.land.checked) {
-      this.land.checked = false;
-    }
     this.landingService.getMasterData().subscribe(response => {
-      this.populateMasterData(response);
+      this.populateMasterData(response, this.landingService.selectedYear.value);
       this.initialDataLoad = false;
       this.filterApplied = false;
     });
@@ -72,40 +83,61 @@ export class LandingComponent implements OnInit {
   private getsuccessfullLaunchData() {
     this.filterApplied = true;
     this.landingService.onSuccessLaunchTrue().subscribe(result => {
-      this.populateMasterData(result);
+      this.populateMasterData(result, this.landingService.selectedYear.value);
       this.filterApplied = false;
     })
   }
 
-  private getsuccessfullLaunchAndLandData() {
+  private getsuccessfullLaunchAndLandData(selectedYear?) {
     this.filterApplied = true;
-    this.launch.checked = true;
     this.landingService.onSuccessLaunchAndLandTrue().subscribe(result => {
-      this.populateMasterData(result);
+      this.populateMasterData(result, selectedYear);
       this.filterApplied = false;
     })
   }
 
   // Basically an abstracted method to avoid repetetion of same logic in the above methods. Please refer to the call signatures of this method.
-  private populateMasterData(response: any) {
+  private populateMasterData(response: any, selectedYear?: string) {
     let launchYears = [];
     this.masterDataSet = [];
     this.missionDetailsCollection = [];
-    let set = new Set();
     this.years = [];
+    let set = new Set();
     response.forEach(item => {
       const responseObj = this.landingService.assignTemplateValues(item);
-      launchYears.unshift({ year: responseObj.launchYear });
+      launchYears.push({ year: responseObj.launchYear });
       if (responseObj.missionIds.length > 0) {
         this.missionDetailsCollection.unshift(responseObj);
       }
     });
-    launchYears.forEach(item => {
-      if (!set.has(item.year)) {
-        set.add(item.year);
-        this.years.push(item);
-      }
-    });
+    if (this.landingService.originalYearsData.value.length === 0) {
+      launchYears.forEach(item => {
+        if (!set.has(item.year)) {
+          set.add(item.year);
+          this.years.push(item);
+        }
+      });
+      this.landingService.originalYearsData.next(this.years);
+    } else {
+      this.years = this.landingService.originalYearsData.value;
+    }
     this.masterDataSet = this.missionDetailsCollection;
+    this.filterDataBasedOnYear(selectedYear);
+  }
+
+  private filterDataBasedOnYear(year?) {
+    if (year) {
+      this.masterDataSet = this.missionDetailsCollection.filter(item => {
+        return item.launchYear === year;
+      })
+    }
+  }
+
+  private validateSelectedYear(selectedYear): boolean {
+    let yearAvailability: boolean;
+    this.missionDetailsCollection.find(item => {
+      item.launchYear === selectedYear ? yearAvailability = true : false
+    });
+    return yearAvailability;
   }
 }

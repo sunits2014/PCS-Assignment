@@ -1,52 +1,99 @@
-<div *ngIf="initialDataLoad" class="d-flex justify-content-center">
-    <div class="spinner-grow" role="status">
+<div
+    *ngIf="initialDataLoad"
+    class="d-flex justify-content-center"
+>
+    <div
+        class="spinner-grow"
+        role="status"
+    >
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
-<div class="row" *ngIf="!initialDataLoad">
+<div
+    class="row"
+    *ngIf="!initialDataLoad"
+>
     <div class="col-2">
-        <button *ngFor="let year of years" mat-raised-button (click)="selectYear(year)" [color]="year.activeColor">{{year.year}}</button>
+        <div class="buttonsWrapper">
+            <button
+                *ngFor="let year of years"
+                mat-raised-button
+                (click)="selectYear(year)"
+                [color]="year.activeColor"
+            >
+                {{year.year}}
+            </button>
+        </div>
         <div class="slideWrapper">
             <section class="slideSection">
-                <mat-slide-toggle #launch class="example-margin" color="primary" (change)="toggleSuccessfullLaunch($event)">
+                <mat-slide-toggle
+                    #launch
+                    class="example-margin"
+                    color="primary"
+                    (change)="toggleSuccessfullLaunch($event)"
+                >
                     Successfull Launch
                 </mat-slide-toggle>
             </section>
             <section class="slideSection">
-                <mat-slide-toggle #land class="example-margin" color="primary" (change)="toggleSuccessfullLanding($event)" [disabled]="!launch.checked">
+                <mat-slide-toggle
+                    #land
+                    class="example-margin"
+                    color="primary"
+                    (change)="toggleSuccessfullLanding($event)"
+                >
                     Successfull Landing
                 </mat-slide-toggle>
             </section>
         </div>
-        <p>Total no. of items: <b>{{masterDataSet.length}}</b></p>
     </div>
     <div class="col-10 cardWrapper">
         <h4 *ngIf="masterDataSet.length === 0">No Data Found</h4>
-        <div *ngIf="filterApplied" class="d-flex justify-content-center">
-            <div class="spinner-grow" role="status">
+        <div
+            *ngIf="filterApplied"
+            class="d-flex justify-content-center"
+        >
+            <div
+                class="spinner-grow"
+                role="status"
+            >
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <div class="cardGrid" *ngIf="!filterApplied">
-            <mat-card class="missionCard" *ngFor="let dataSet of masterDataSet">
-                <img mat-card-image [src]="dataSet.imageLink" alt="Mission Photo">
+        <div
+            class="cardGrid"
+            *ngIf="!filterApplied"
+        >
+            <mat-card
+                class="missionCard"
+                *ngFor="let dataSet of masterDataSet"
+            >
+                <img
+                    mat-card-image
+                    [src]="dataSet.imageLink"
+                    alt="Mission Photo"
+                >
                 <mat-card-content>
                     <h3>{{dataSet.missionName}}</h3>
                     <b>Mission Ids:</b>
                     <ul>
-                        <li *ngFor="let missionId of dataSet.missionIds">
-                            {{missionId}}
-                        </li>
+                        <li *ngFor="let missionId of dataSet.missionIds">{{missionId}}</li>
                     </ul>
                     <ul id="missionDetails">
                         <li>
-                            <b>Launch Year</b>: <span>{{dataSet.launchYear}}</span>
+                            <b>Launch Year</b>
+                            :
+                            <span>{{dataSet.launchYear}}</span>
                         </li>
                         <li>
-                            <b>Successfull Launch</b>: <span>{{dataSet.successfullLaunch}}</span>
+                            <b>Successfull Launch</b>
+                            :
+                            <span>{{dataSet.successfullLaunch}}</span>
                         </li>
                         <li>
-                            <b>Successfull Landing</b>: <span>{{dataSet.successfullLanding}}</span>
+                            <b>Successfull Landing</b>
+                            :
+                            <span>{{dataSet.successfullLanding}}</span>
                         </li>
                     </ul>
                 </mat-card-content>
