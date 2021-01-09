@@ -21,7 +21,7 @@ export class LandingComponent implements OnInit {
 
   private missionDetailsCollection: Array<IFlightResponse>
 
-  constructor(private landingService: LandingService) {
+  constructor(public landingService: LandingService) {
     this.years = [];
     this.masterDataSet = [];
     this.missionDetailsCollection = [];
@@ -58,7 +58,7 @@ export class LandingComponent implements OnInit {
   }
 
   // Basically main method to fetch non-filtered data.
-  private getMasterData() {
+  public getMasterData() {
     if (this.land && this.land.checked) {
       this.land.checked = false;
     }
