@@ -46,23 +46,28 @@ export class LandingComponent implements OnInit {
       })
       year.activeColor = 'primary';
       if (this.validateSelectedYear(year.year)) {
-        this.getsuccessfullLaunchAndLandData(year.year);
-        this.launch.checked = true;
-        this.land.checked = true;
-      } else {
         this.filterDataBasedOnYear(year.year);
       }
     }
   }
 
   public toggleSuccessfullLaunch(event?) {
-    this.filterApplied = true;
-    event.checked ? this.getsuccessfullLaunchData() : this.getMasterData();
+    if (event.checked && this.land.checked) {
+      this.getsuccessfullLaunchAndLandData()
+    } else if (!event.checked && this.land.checked) {
+      this.getsuccessfullLaunchAndLandData()
+    } else if (event.checked) {
+      this.getsuccessfullLaunchData()
+    } else {
+      this.getMasterData()
+    }
   }
 
   public toggleSuccessfullLanding(event) {
     if (event.checked) {
-      this.getsuccessfullLaunchAndLandData(this.landingService.selectedYear.value)
+      this.getsuccessfullLaunchAndLandData()
+    } else if (event.checked && this.launch.checked) {
+      this.getsuccessfullLaunchAndLandData()
     } else if (!event.checked && this.launch.checked) {
       this.getsuccessfullLaunchData()
     } else {
@@ -88,10 +93,10 @@ export class LandingComponent implements OnInit {
     })
   }
 
-  private getsuccessfullLaunchAndLandData(selectedYear?) {
+  private getsuccessfullLaunchAndLandData() {
     this.filterApplied = true;
     this.landingService.onSuccessLaunchAndLandTrue().subscribe(result => {
-      this.populateMasterData(result, selectedYear);
+      this.populateMasterData(result, this.landingService.selectedYear.value);
       this.filterApplied = false;
     })
   }
@@ -106,9 +111,7 @@ export class LandingComponent implements OnInit {
     response.forEach(item => {
       const responseObj = this.landingService.assignTemplateValues(item);
       launchYears.push({ year: responseObj.launchYear });
-      if (responseObj.missionIds.length > 0) {
-        this.missionDetailsCollection.unshift(responseObj);
-      }
+      this.missionDetailsCollection.push(responseObj);
     });
     if (this.landingService.originalYearsData.value.length === 0) {
       launchYears.forEach(item => {
