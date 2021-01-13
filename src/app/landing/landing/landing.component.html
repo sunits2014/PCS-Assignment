@@ -14,6 +14,7 @@
     *ngIf="!initialDataLoad"
 >
     <div class="col-2">
+        <h2>Filters:</h2>
         <div class="buttonsWrapper">
             <button
                 *ngFor="let year of years"
@@ -26,24 +27,46 @@
         </div>
         <div class="slideWrapper">
             <section class="slideSection">
-                <mat-slide-toggle
-                    #launch
-                    class="example-margin"
-                    color="primary"
-                    (change)="toggleSuccessfullLaunch($event)"
-                >
-                    Successfull Launch
-                </mat-slide-toggle>
+                <p>Successfull Launch:</p>
+                <div class="filterButtons">
+                    <button
+                        #launchTrue
+                        mat-raised-button
+                        (click)="launchSuccessful()"
+                        [color]="launchTrue.isActive ? 'primary': ''"
+                    >
+                        True
+                    </button>
+                    <button
+                        #launchFail
+                        mat-raised-button
+                        (click)="launchFailed()"
+                        [color]="launchFail.isActive ? 'primary': ''"
+                    >
+                        False
+                    </button>
+                </div>
             </section>
             <section class="slideSection">
-                <mat-slide-toggle
-                    #land
-                    class="example-margin"
-                    color="primary"
-                    (change)="toggleSuccessfullLanding($event)"
-                >
-                    Successfull Landing
-                </mat-slide-toggle>
+                <p>Successfull Landing:</p>
+                <div class="filterButtons">
+                    <button
+                        #landTrue
+                        mat-raised-button
+                        (click)="landSuccessful()"
+                        [color]="landTrue.isActive ? 'primary': ''"
+                    >
+                        True
+                    </button>
+                    <button
+                        #landFail
+                        mat-raised-button
+                        (click)="landFailed()"
+                        [color]="landFail.isActive ? 'primary': ''"
+                    >
+                        False
+                    </button>
+                </div>
             </section>
             <p>
                 Total Items:
